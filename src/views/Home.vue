@@ -1,7 +1,7 @@
 <template>
-  <HelloWorld />
+  <AwesomeTerminal />
 </template>
 
 <script setup>
-  import HelloWorld from '@/components/HelloWorld.vue'
+  import AwesomeTerminal from '@/components/AwesomeTerminal.vue'
 </script>
