@@ -3,20 +3,24 @@
     <thead>
       <tr>
         <th class="text-left">
+          Code
+        </th>
+        <th class="text-left">
           Name
         </th>
         <th class="text-left">
-          Calories
+          Quantity
         </th>
       </tr>
     </thead>
     <tbody>
       <tr
-        v-for="item in desserts"
-        :key="item.name"
+        v-for="data in datas"
+        :key="data.name"
       >
-        <td>{{ item.name }}</td>
-        <td>{{ item.calories }}</td>
+        <td>{{ data.product.code }}</td>
+        <td>{{ data.product.name }}</td>
+        <td>{{ data.quantity }}</td>
       </tr>
     </tbody>
   </v-table>
@@ -25,6 +29,7 @@
   export default {
     data () {
       return {
+        datas:{},
         desserts: [
           {
             name: 'Frozen Yogurt',
@@ -71,13 +76,22 @@
     },
     methods: {
       getData(){
-        fetch("https://api.example.com/users")
+        const headers = { 
+          "Content-Type": "application/json",
+          "Authorization": "Bearer o7Ytbt9XQLI3PgtebJfKSXKEf0XHU74Y" 
+        
+        };
+        fetch("https://spe-academy.spesolution.net/api/recruitment",{ headers })
+
         .then(res => res.json())
-        .then(data => console.log(data))
+        .then(data => {
+          this.datas = data
+          console.log(this.datas);
+        })
       }
     },
     mounted() {
-      
+      this.getData()
     },
   }
 </script>
